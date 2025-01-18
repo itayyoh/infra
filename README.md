@@ -1,2 +1,0 @@
-# infra
-infrastructure for shorturl
