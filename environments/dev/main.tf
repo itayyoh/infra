@@ -36,7 +36,7 @@ module "eks" {
   kubernetes_version       = var.kubernetes_version
   cluster_role_arn         = module.security.cluster_role_arn
   node_role_arn           = module.security.node_role_arn
-  subnet_ids              = module.networking.private_subnet_ids
+  subnet_ids              = module.networking.public_subnet_ids
   cluster_security_group_id = module.security.cluster_security_group_id
   tags                    = local.mandatory_tags
 

@@ -55,7 +55,7 @@ resource "aws_eks_node_group" "main" {
 
   # Ensure that we can properly delete the node group when destroying
   lifecycle {
-    create_before_destroy = true
+    create_before_destroy = false
   }
 
   labels = {
