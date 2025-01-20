@@ -1,0 +1,4 @@
+gitops:
+  repoUrl: ""
+  targetRevision: "feature"
+  path: "apps"

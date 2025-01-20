@@ -1,11 +1,23 @@
 # environments/dev/variables.tf
 
-variable "region" {
-  description = "AWS region"
+variable "github_token" {
+  description = "GitHub token for ArgoCD"
   type        = string
-  default     = "ap-south-1"  # Mumbai region
+  sensitive   = true
 }
 
+variable "gitops_repo_url" {
+  description = "URL of the GitOps repository"
+  type        = string
+}
+
+variable "gitops_repo_branch" {
+  description = "Branch of the GitOps repository to use"
+  type        = string
+  default     = "main"
+}
+
+# Your existing variables
 variable "vpc_cidr" {
   description = "CIDR block for VPC"
   type        = string
@@ -22,4 +34,10 @@ variable "kubernetes_version" {
   description = "Kubernetes version"
   type        = string
   default     = "1.27"
+}
+
+variable "region" {
+  description = "AWS region"
+  type        = string
+  default     = "ap-south-1"  # Mumbai region
 }

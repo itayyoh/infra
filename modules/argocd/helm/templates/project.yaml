@@ -6,7 +6,7 @@ metadata:
 spec:
   description: URL Shortener Project
   sourceRepos:
-    - https://github.com/your-org/gitops-config.git
+    - https://github.com/itayyoh/gitops-shorturl.git
   destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc

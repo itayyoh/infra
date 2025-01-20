@@ -46,7 +46,22 @@ module "eks" {
   ]
 }
 
+# Secrets Manager for GitHub token
+module "secrets" {
+  source = "../../modules/secrets"
+
+  environment  = local.environment
+  github_token = var.github_token
+  tags         = local.mandatory_tags
+}
+
+# ArgoCD Installation
 # ArgoCD Installation
 module "argocd" {
   source = "../../modules/argocd"
+
+  github_token       = var.github_token
+  gitops_repo_url    = var.gitops_repo_url
+  gitops_repo_branch = var.gitops_repo_branch
+  cluster_name       = module.eks.cluster_name
 }
