@@ -50,6 +50,7 @@ resource "helm_release" "argocd" {
         exec.enabled: "true"
         timeout.reconciliation: 180s
         repositories: |
+          # Your existing gitops repo config
           - url: ${var.gitops_repo_url}
             type: git
             name: gitops-repo
@@ -59,6 +60,13 @@ resource "helm_release" "argocd" {
             passwordSecret:
               name: github-token-itay
               key: token
+          # Add Helm repositories
+          - type: helm
+            url: https://charts.bitnami.com/bitnami
+            name: bitnami
+          - type: helm
+            url: https://kubernetes.github.io/ingress-nginx
+            name: ingress-nginx
     
     repoServer:
       resources:
@@ -83,6 +91,7 @@ resource "helm_release" "argocd" {
       keep: true
     EOT
   ]
+
 
   depends_on = [kubernetes_secret.github_token]
 }
